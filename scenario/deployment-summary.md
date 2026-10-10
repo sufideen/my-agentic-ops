@@ -15,5 +15,5 @@
 - Verified: secret exists, firewall rule exists, app setting present.
 
 ## Pending
-- SQL contained user for the managed identity is NOT done. Run manually as the Entra admin on sqldb-sdgweb02-dev:
-  `CREATE USER [app-sdgweb02-dev] FROM EXTERNAL PROVIDER; ALTER ROLE db_datareader ADD MEMBER [app-sdgweb02-dev]; ALTER ROLE db_datawriter ADD MEMBER [app-sdgweb02-dev];`
+- SQL contained user step is DONE (2026-10-10): user [app-sdgweb02-dev] created on sqldb-sdgweb02-dev with db_datareader and db_datawriter. The temporary firewall rule was removed; only AllowAzureServices remains.
+- No other pending items.
