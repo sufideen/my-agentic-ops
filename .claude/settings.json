@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(scenario/**)",
+      "Bash(az account show*)",
+      "Bash(az ad signed-in-user show*)",
+      "Bash(az bicep build*)",
+      "Bash(azd env *)",
+      "Bash(azd provision*)"
+    ],
+    "deny": [
+      "Bash(azd down*)",
+      "Bash(az group delete*)",
+      "Bash(az resource delete*)",
+      "Bash(rm -rf*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *.bicep) az bicep build --file \"$f\" --stdout >/dev/null || exit 2 ;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}

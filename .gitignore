@@ -1,0 +1,4 @@
+.azure/
+scenario/
+*.env
+.claude/settings.local.json
