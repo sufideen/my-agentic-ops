@@ -1,0 +1,4 @@
+name: sdgweb01-dev
+infra:
+  provider: bicep
+  path: infra
