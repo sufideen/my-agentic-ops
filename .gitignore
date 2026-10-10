@@ -1,4 +1,7 @@
 .azure/
-scenario/
+scenario/*
+!scenario/infra/
+scenario/infra/*
+!scenario/infra/*.bicep
 *.env
 .claude/settings.local.json
